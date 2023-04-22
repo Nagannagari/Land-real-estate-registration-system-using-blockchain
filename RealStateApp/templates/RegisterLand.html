@@ -1,0 +1,177 @@
+{% load static %}
+<html>
+<head>
+<title>Land Real Estate Registration</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{% static 'default.css' %}" rel="stylesheet" type="text/css" media="screen" />
+ <script LANGUAGE="Javascript" >
+function validate(){
+	var t1=document.forms["f1"]["t1"].value;
+	var t2=document.forms["f1"]["t2"].value;
+	var t3=document.forms["f1"]["t3"].value;
+	var t4=document.forms["f1"]["t5"].value;
+	var t5=document.forms["f1"]["t6"].value;
+	var t6=document.forms["f1"]["t7"].value;
+	var t7=document.forms["f1"]["t8"].value;
+	var t8=document.forms["f1"]["t9"].value;
+	var t8=document.forms["f1"]["t10"].value;
+	if(t1 == null || t1==""){
+		window.alert("Curent owner name must be enter");
+		document.f1.t1.focus();
+		return false;
+	}
+	if(t2 == null || t2==""){
+		window.alert("Land details must be enter");
+		document.f1.t2.focus();
+		return false;
+	}
+	if(t3 == null || t3==""){
+		window.alert("Current owner address must be enter");
+		document.f1.t3.focus();
+		return false;
+	}
+	if(t5 == null || t5==""){
+		window.alert("Selected document no must be enter");
+		document.f1.t5.focus();
+		return false;
+	}
+	if(t6 == null || t6==""){
+		window.alert("Existing owner name must be enter");
+		document.f1.t6.focus();
+		return false;
+	}
+	if(t7 == null || t7==""){
+		window.alert("Existing owner address must be enter");
+		document.f1.t7.focus();
+		return false;
+	}
+	if(t8 == null || t8==""){
+		window.alert("Existing owner phone no must be enter");
+		document.f1.t8.focus();
+		return false;
+	}
+	if(!t8.value.match(/^\d{10}$/)){
+		window.alert("Valid phone no must be enter");
+		document.f1.t8.focus();
+		return false;
+	}
+	if(t9 == null || t9==""){
+		window.alert("Current owner phone no must be enter");
+		document.f1.t9.focus();
+		return false;
+	}
+	if(!t9.value.match(/^\d{10}$/)){
+		window.alert("Valid phone no must be enter");
+		document.f1.t9.focus();
+		return false;
+	}
+	if(t10 == null || t10==""){
+		window.alert("Land picture must be upload");
+		document.f1.t10.focus();
+		return false;
+	}
+	return true;
+}
+		
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id="logo">
+      <h1><font color="orange" size=6>Land Real Estate Registration</font></h1>
+	  <marquee><font color="pink" size=4>Land Real Estate Registration</font></marquee>
+    </div>
+   
+  
+    </div>
+  </div>
+  <div id="menu">
+     <ul>
+      <li><a href="{% url 'RegisterLand' %}">Register Land</a></li>
+      <li><a href="{% url 'AdminLandSearch' %}">Search Land Details</a></li>
+      <li><a href="{% url 'index' %}">Logout</a></li>
+      
+   </ul>
+  </div>
+  <div class="entry">
+   <br/><br/><br/>
+	<font size="" color="white"><center>{{ data|safe }}</center></font>
+	 <br>
+	 <center><font size="3" color="white">Admin Login Screen</font></center>
+	<form name="f1" method="post" action={% url 'RegisterLandAction' %} enctype="multipart/form-data" OnSubmit="return validate()">
+	{% csrf_token %}
+	<br><br>
+	<TABLE align=center width="35%" class="notepad">
+		<TR><TH align="left"><font size="" color="white">Current&nbsp;Owner&nbsp;Name
+		<TD>&nbsp;&nbsp;<Input type="text" name="t1" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+		
+		<TR><TH align="left"><font size="" color="white">Land&nbsp;Detail
+		<TD>&nbsp;&nbsp;<textarea name="t2"  cols="40" rows="8"></textarea>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Current&nbsp;Owner&nbsp;Address
+		<TD>&nbsp;&nbsp;<textarea name="t3"  cols="40" rows="8"></textarea>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Document&nbsp;Submitted
+		<TD>&nbsp;&nbsp;<select name="t4">
+		<option value="Aadhar Card">Aadhar Card</option>
+		<option value="Passport">Passport</option>
+		<option value="Driving License">Driving License</option>
+		<option value="Pancard">Pancard</option>
+		</select>
+		</TD>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Selected&nbsp;Document&nbspNo
+		<TD>&nbsp;&nbsp;<Input type="text" name="t5" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Existing&nbsp;Owner&nbsp;Name
+		<TD>&nbsp;&nbsp;<Input type="text" name="t6" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Existing&nbsp;Owner&nbsp;Address
+		<TD>&nbsp;&nbsp;<textarea name="t7"  cols="40" rows="8"></textarea>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Existing&nbsp;Owner&nbsp;Phone&nbsp;No
+		<TD>&nbsp;&nbsp;<Input type="text" name="t8" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Current&nbsp;Owner&nbsp;Phone&nbsp;No
+		<TD>&nbsp;&nbsp;<Input type="text" name="t9" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+
+		<TR><TH align="left"><font size="" color="white">Upload&nbsp;Land&nbsp;Picture
+		<TD>&nbsp;&nbsp;<Input type="file" name="t10" value='' class="form-control">
+		<div id='nameid'></div>
+		</TD>
+		</TR>
+
+
+		  <TR>
+				 <TD></TD>
+			<TD>	
+		  <input type="submit" value="Add Details">
+		 
+		  </TABLE><br/>
+<br/><br/><br/><br/><br/>		
+</form>
+</div>
+
+</body>
+</html>
